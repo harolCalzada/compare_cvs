@@ -1,12 +1,20 @@
 
 from django.shortcuts import render
 from django.http import HttpResponse
+from nltk.tokenize import word_tokenize
 from .models import Curriculum
-
+from .tfidf import tfidf
 
 
 def home(request):
-    print ('hola mundo')
+    curriculums = Curriculum.objects.all()
+    tokenized_curriculums = [word_tokenize(curriculum.algoritmo_texto) for curriculum in curriculums]
+    for i, curriculum in enumerate(tokenized_curriculums):
+        print ("Top words in document {}".format(i+1))
+        scores = {word: tfidf(word, curriculum, tokenized_curriculums) for word in curriculum}
+        sorted_words = sorted(scores.items(), key=lambda x: x[1], reverse=True)
+        for word, score in sorted_words[:3]:
+            print("\tWord: {}, TF-IDF: {}".format(word, round(score, 5)))
     return render(request, 'home.html', locals())
 
 

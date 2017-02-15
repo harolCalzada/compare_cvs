@@ -26,8 +26,8 @@ class Curriculum(models.Model):
     algoritmo_formato_documento = models.CharField('Formato del documento', max_length=100)
     algoritmo_numero_saltos_linea = models.IntegerField('Numero de saltos de linea', blank=True, null=True)
 
-    def __str__(self):
-        return '{} {}'.format(self.apellidos, self.nombres)
+    def __unicode__(self):
+        return u'{0} {1}'.format(self.apellidos, self.nombres)
 
     class Meta:
         verbose_name = 'Curriculum'
