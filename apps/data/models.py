@@ -32,3 +32,40 @@ class Curriculum(models.Model):
     class Meta:
         verbose_name = 'Curriculum'
         verbose_name_plural = 'Curriculums'
+
+
+class DataCurriculum(models.Model):
+    formato_documento = models.CharField('Formato del documento', max_length=100, blank=True, null=True)
+    nombres = models.CharField('Nombres', max_length=100, blank=True, null=True)
+    fecha_revision = models.DateTimeField('Fecha de revisión')
+    nombre_documento = models.CharField('Nombre del archivo', max_length=100, blank=True, null=True)
+    puntaje_nombre_documento = models.IntegerField('Puntaje nombre documento')
+    email = models.EmailField('Email', blank=True, null=True)
+    seccion_laboral = models.TextField('Sección laboral', blank=True, null=True)
+    tiene_experiencia = models.BooleanField('TIene experiencia', default=False)
+    seccion_estudios = models.TextField('Sección estudios', blank=True, null=True)
+    tiene_estudios = models.BooleanField('Tiene estudios', default=False)
+    puntaje_orden_estructura = models.IntegerField('Puntaje Orden Estructura', blank=True, null=True)
+    frases_innecesarias = models.TextField('Frases innecesarias', blank=True, null=True)
+    puntaje_frases_innecesarias = models.IntegerField('Puntaje Frases Innecesarias', blank=True, null=True)
+    numero_lineas = models.IntegerField('Numero de lineas', blank=True, null=True)
+    numero_paginas = models.IntegerField('Numero de paginas', blank=True, null=True)
+    puntaje_longitud = models.IntegerField('Puntaje longitud', blank=True, null=True)
+    antiguedad_laboral = models.CharField('Antiguedad laboral', max_length=100, blank=True, null=True)
+    puntaje_antiguedad_laboral = models.IntegerField('Puntaje antiguedad laboral', blank=True, null=True)
+    fechas_trabajo = models.TextField('Fechas trbajo', blank=True, null=True)
+    permanencia_anios = models.TextField('Lista permanencia años', blank=True, null=True)
+    puntaje_permanencia_promedio = models.IntegerField('Puntaje permanencia promedio', blank=True, null=True)
+    puntaje_orden_cronologico = models.IntegerField('Puntaje orden cronologico', blank=True, null=True)
+    verbos_accion = models.TextField('Verbos accion', blank=True, null=True)
+    puntaje_verbos_accion = models.IntegerField('Puntaje verbos accion', blank=True, null=True)
+    numeros = models.TextField('Numeros', blank=True, null=True)
+    puntaje_numeros = models.IntegerField('Puntaje Numeros', blank=True, null=True)
+    texto = models.TextField('Texto', blank=True, null=True)
+
+    class Meta:
+        verbose_name = "Data Curriculum"
+        verbose_name_plural = "Data Curriculums"
+
+    def __str__(self):
+        return self.nombre_documento
