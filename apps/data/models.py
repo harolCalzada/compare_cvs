@@ -62,6 +62,8 @@ class DataCurriculum(models.Model):
     numeros = models.TextField('Numeros', blank=True, null=True)
     puntaje_numeros = models.IntegerField('Puntaje Numeros', blank=True, null=True)
     texto = models.TextField('Texto', blank=True, null=True)
+    tokenized_job_section = models.TextField('Tokenized job section', blank=True, null=True)
+    new_job_text = models.TextField('New job text', blank=True, null=True)
 
     class Meta:
         verbose_name = "Data Curriculum"
